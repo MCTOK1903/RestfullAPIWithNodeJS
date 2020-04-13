@@ -14,7 +14,8 @@ class Service{
     
     func fetchPosts(completion: @escaping ([Post]?) -> ()){
         
-        guard let url = URL(string: "http://localhost:3000/posts") else {return}
+        guard let url = URL(string:"http://localhost:3000/posts") else {return}
+        
         URLSession.shared.dataTask(with: url) { (data, res, err) in
             if let err = err{
                 completion(nil)
@@ -25,7 +26,6 @@ class Service{
                 if let postList = postList {
                     completion(postList)
                 }
-                
             }
         }.resume()
         

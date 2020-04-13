@@ -9,7 +9,16 @@
 import Foundation
 
 struct Post: Decodable {
-    let id: String
-    let title: String
-    let description:String
+    let id, title, postDescription, date: String
+    let v: Int
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case title
+        case postDescription = "description"
+        case date
+        case v = "__v"
+    }
 }
+ 
+

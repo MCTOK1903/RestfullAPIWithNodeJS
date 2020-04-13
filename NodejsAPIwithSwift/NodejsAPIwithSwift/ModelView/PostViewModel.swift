@@ -21,6 +21,6 @@ extension PostViewModel{
         return self.postViewModel.title
     }
     var description: String {
-        return self.postViewModel.description
+        return self.postViewModel.postDescription
     }
 }
