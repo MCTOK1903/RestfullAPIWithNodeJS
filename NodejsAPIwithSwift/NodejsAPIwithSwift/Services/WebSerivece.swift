@@ -28,7 +28,25 @@ class Service{
                 }
             }
         }.resume()
-        
     }
+    
+    func  deletePost(postId:String, completion: @escaping (Error?) -> ()){
+        
+        guard let url = URL(string: "http://localhost:3000/posts/\(postId)") else{return}
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: urlRequest) { (data, res, err) in
+            if let err = err {
+                completion(err)
+                return
+            }
+            completion(nil)
+        }.resume()
+    }
+    
+    
+    
     
 }
