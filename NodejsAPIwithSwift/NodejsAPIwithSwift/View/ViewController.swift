@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var postListViewModel: PostListViewModel!
@@ -20,8 +20,10 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
+        DispatchQueue.main.async {
+            self.fetchData()
+        }
         
-        fetchData()
     }
     
     
@@ -35,7 +37,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
             }
         }
     }
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.postListViewModel == nil ? 0 : postListViewModel.numberOfRowsInSection()
@@ -48,6 +50,26 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         cell.detailTextLabel?.text = postView.description
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let post = self.postListViewModel.cellForRowAt(indexPath.row)
+            Service.service.deletePost(postId: post.id) { (err) in
+                if let err = err {
+                    print(err.localizedDescription)
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.postListViewModel.removePost(indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                    print("success")
+                }
+            }
+        }
+    }
+    
+    
+    
+    
 }
 
