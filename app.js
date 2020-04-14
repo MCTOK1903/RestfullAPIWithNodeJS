@@ -16,7 +16,7 @@ app.use('/posts', postsRoute);
 
 //routes
 app.get('/',(req,res) => {
-    res.send("babaya rahmet ")
+    res.send("hi")
 });
 
 //connect to DB
