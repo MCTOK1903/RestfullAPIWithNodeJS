@@ -24,6 +24,16 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
             self.fetchData()
         }
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Posts"
+        navigationItem.rightBarButtonItem = .init(title: "Create Post", style: .done, target: self, action: #selector(createPost))
+        
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+                   self.fetchData()
+        }
     }
     
     
@@ -38,6 +48,9 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         }
     }
     
+    @objc func createPost(){
+        performSegue(withIdentifier: "toNewPost", sender: nil)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.postListViewModel == nil ? 0 : postListViewModel.numberOfRowsInSection()

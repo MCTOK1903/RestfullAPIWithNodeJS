@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0063729C244A18A40067F34D /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063729B244A18A40067F34D /* NewPostViewController.swift */; };
 		00A1D1CE24450C52009D0F3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A1D1CD24450C52009D0F3A /* AppDelegate.swift */; };
 		00A1D1D024450C52009D0F3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A1D1CF24450C52009D0F3A /* SceneDelegate.swift */; };
 		00A1D1D224450C52009D0F3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A1D1D124450C52009D0F3A /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0063729B244A18A40067F34D /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		00A1D1CA24450C52009D0F3A /* NodejsAPIwithSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NodejsAPIwithSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00A1D1CD24450C52009D0F3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00A1D1CF24450C52009D0F3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				00A1D1CD24450C52009D0F3A /* AppDelegate.swift */,
 				00A1D1CF24450C52009D0F3A /* SceneDelegate.swift */,
 				00A1D1D124450C52009D0F3A /* ViewController.swift */,
+				0063729B244A18A40067F34D /* NewPostViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				00A1D1E524450E21009D0F3A /* WebSerivece.swift in Sources */,
 				00A1D1D224450C52009D0F3A /* ViewController.swift in Sources */,
 				00A1D1CE24450C52009D0F3A /* AppDelegate.swift in Sources */,
+				0063729C244A18A40067F34D /* NewPostViewController.swift in Sources */,
 				00A1D1D024450C52009D0F3A /* SceneDelegate.swift in Sources */,
 				00A1D1E724450E45009D0F3A /* Post.swift in Sources */,
 			);
