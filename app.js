@@ -3,8 +3,10 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+var session = require('express-session');
 require('dotenv/config');
 
+app.use(session({secret:process.env.SECRET_TOKEN,saveUninitialized:true,resave:true}))
 app.use(cors());
 app.use(bodyParser.json());
 

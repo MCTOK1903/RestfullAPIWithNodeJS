@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
+const verify = require('./verifyToken');
 
 //get back all posts
-router.get('/',async (req,res) => {
+router.get('/',verify,async (req,res) => {
     try{
         const posts = await Post.find();
         res.json(posts);
@@ -13,7 +14,7 @@ router.get('/',async (req,res) => {
 });
 
 //save a post 
-router.post('/', async (req,res) => {
+router.post('/',verify,async (req,res) => {
     const post = new Post({
         title: req.body.title,
         description: req.body.description
@@ -28,7 +29,7 @@ router.post('/', async (req,res) => {
 
 //findbyId
 
-router.get('/:postId',async (req,res) => {
+router.get('/:postId',verify,async (req,res) => {
     try{
         const post = await Post.findById(req.params.postId);
         res.json(post); 
@@ -40,7 +41,7 @@ router.get('/:postId',async (req,res) => {
 
 //delete
 
-router.delete('/:postId',async (req,res) => {
+router.delete('/:postId',verify,async (req,res) => {
     try{
         const deletedPost = await Post.remove({_id: req.params.postId}); // _id yazılışına dikkat et DB'de nasıl yazılmışsa öyle yazılmalı
         res.json(deletedPost);
@@ -51,7 +52,7 @@ router.delete('/:postId',async (req,res) => {
 
 //update
 
-router.patch('/:postId', async (req,res) => {
+router.patch('/:postId',verify,async (req,res) => {
     try{
         const updatedPost = await Post.updateOne({_id: req.params.postId}, 
             {$set:{title:req.body.title,description:req.body.description}}

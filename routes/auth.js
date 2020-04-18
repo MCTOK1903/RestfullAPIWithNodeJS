@@ -2,6 +2,9 @@ const router = require('express').Router();
 const User = require('../models/User');
 const {registerValidation, loginValidation} = require('../validation/validation.js');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+var sess;
 
 router.post('/register', async (req,res) => {
     //validation
@@ -35,7 +38,6 @@ router.post('/register', async (req,res) => {
 
 });
 
-
 router.post('/login', async (req,res) =>{
 
     //login validation
@@ -51,8 +53,21 @@ router.post('/login', async (req,res) =>{
     const validPass = await bcrypt.compare(req.body.password,user.password)
     if(!validPass) return res.status(400).send('password is not match');
 
-    res.send('logged in');
+    sess = req.session;
+    sess.email = req.body.email;
+    console.log(sess);
+    //create and assing a token
+    const token = jwt.sign({_id:user._id},process.env.SECRET_TOKEN);
+    res.header('auth-token',token).send(token);
 
+    
+});
+
+router.post('/logout', async (req,res) => {
+   req.session.destroy((err)=> {
+        if(err) return res.send('error');
+   });
+   console.log(req.session);
 });
 
 
