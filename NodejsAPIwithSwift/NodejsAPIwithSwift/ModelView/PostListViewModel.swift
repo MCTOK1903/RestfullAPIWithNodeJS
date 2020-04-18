@@ -27,6 +27,4 @@ extension PostListViewModel{
         self.postList.remove(at: index)
     }
     
-    
-    
 }

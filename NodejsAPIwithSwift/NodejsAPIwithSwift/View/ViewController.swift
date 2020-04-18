@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var tableView: UITableView!
     
     private var postListViewModel: PostListViewModel!
+    var chosenPost : PostViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,18 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
                     print("success")
                 }
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        chosenPost = postListViewModel.cellForRowAt(indexPath.row)
+        self.performSegue(withIdentifier: "toNewPost", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toNewPost" {
+            let destination = segue.destination as! NewPostViewController
+            destination.selectedPost = chosenPost
         }
     }
     

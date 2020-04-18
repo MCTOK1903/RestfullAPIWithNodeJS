@@ -59,13 +59,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRq-QW-c0r">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRq-QW-c0r">
                                 <rect key="frame" x="147" y="400" width="120" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveClicked:" destination="wmH-rr-NJo" eventType="touchUpInside" id="DfQ-Cf-Rqu"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVY-Kn-qK6">
+                                <rect key="frame" x="147" y="399" width="120" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="updateClicked:" destination="wmH-rr-NJo" eventType="touchUpInside" id="Tcz-UU-2j4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -76,7 +85,8 @@
                     <connections>
                         <outlet property="descriptionTF" destination="QSW-jw-zJ7" id="Bj6-XS-4iQ"/>
                         <outlet property="saveButton" destination="vRq-QW-c0r" id="MOF-wD-EQq"/>
-                        <outlet property="titleTf" destination="QSW-jw-zJ7" id="cOt-C7-R6H"/>
+                        <outlet property="titleTf" destination="4E8-sN-2wt" id="nyZ-ZK-dMZ"/>
+                        <outlet property="updateButton" destination="AVY-Kn-qK6" id="VxQ-FE-UQY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDl-9P-XND" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

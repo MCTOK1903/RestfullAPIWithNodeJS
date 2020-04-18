@@ -62,6 +62,40 @@ class Service{
     }
     
     
+    func updatePost(postId:String,title:String,description:String, completion: @escaping (Error?) -> ()){
+        
+        guard let url = URL(string: "http://localhost:3000/posts/\(postId)") else {return}
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "PATCH"
+        
+        let params = ["title":title,"description":description]
+        
+        do{
+            
+            let data = try JSONSerialization.data(withJSONObject: params, options: .init())
+            
+            urlRequest.httpBody = data
+            urlRequest.setValue("application/json", forHTTPHeaderField: "content-type")
+            
+            URLSession.shared.dataTask(with: urlRequest) { (data, res, err) in
+                if let err = err {
+                    completion(nil)
+                    print(err)
+                    return
+                }
+                guard let data = data else {return}
+                completion(nil)
+                print("succes")
+            }.resume()
+        }catch{
+            completion(nil)
+        }
+        
+        
+        
+    }
+    
     
     func  deletePost(postId:String, completion: @escaping (Error?) -> ()){
         
